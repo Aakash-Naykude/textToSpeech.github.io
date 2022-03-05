@@ -6,6 +6,7 @@ const speedInput = document.getElementById("speed");
 let currentCharacter;
 playbtn.addEventListener("click", () => {
   playText(textInput.value);
+  console.log(textInput.value);
 });
 stopbtn.addEventListener("click", stopText);
 pausebtn.addEventListener("click", pauseText);
@@ -28,7 +29,9 @@ function playText(text) {
   utterrance.text = text;
   utterrance.rate = speedInput.value || 1;
   textInput.disabled = true;
-  speechSynthesis.speak(utterrance);
+  let outlan = document.getElementById("outlangs").value;
+  utterrance.lang = outlan;
+  window.speechSynthesis.speak(utterrance);
 }
 function pauseText() {
   if (speechSynthesis.speaking) {
